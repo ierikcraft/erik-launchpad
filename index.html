@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://img.freepik.com/vector-gratis/iconos-aplicacion-estilo-3d_23-2147519672.jpg" type="image/png">
+    <title>Erik Launcher</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Contenedor principal alineado a la derecha */
+        .2 body {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px;
+        }
+
+        /* Estilo del botón inicial */
+        .iniciar-sesion {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Estilo del contenedor que mostrará el nombre e icono */
+        .perfil {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* Estilo del ícono de usuario */
+        .perfil img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        /* Estilo del menú desplegable */
+        .menu-opciones {
+            display: none;
+            position: absolute;
+            top: 50x;
+            right: 0;
+            background-color: blue;
+            border: 1px solid #ccc;
+            list-style: none;
+            padding: 10px;
+            margin-top: 10px;
+            z-index: 1;
+        }
+
+        .menu-opciones li {
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .menu-opciones li:hover {
+            background-color: #ADD8E6;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+          
+        }
+        header {
+            background-color: #007aff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+           .container2 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: left;
+            padding: 3px;
+        }
+        .app-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin: 15px;
+            padding: 15px;
+            width: 200px;
+            text-align: center;
+            transition: transform 0.2s; /* Animación al escalar */
+        }
+        .app-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .app-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .download-btn {
+            background-color: #007aff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s, transform 0.2s; /* Transición suave */
+        }
+        .download-btn:hover {
+            background-color: #005bb5; /* Color al pasar el mouse */
+            transform: scale(1.05); /* Escala al pasar el mouse */
+        }
+        .app-card:hover {
+            transform: scale(1.05); /* Escala la tarjeta al pasar el mouse */
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #007aff;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+     .search-container {
+  
+            display: flex;
+            justify-content: center; /* Centra el contenido */
+            align-items: center; /* Centra el contenido verticalmente */
+            border-radius: 25px;
+       
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+ .search-container {
+  width: 100%; /* Ocupa todo el ancho disponible */
+  display: flex; /* Usamos flexbox para alinear los elementos */
+  justify-content: center; /* Centra el contenido horizontalmente */
+}
+
+.search-container input {
+  width: 50%; /* El campo de búsqueda ocupará el 50% del ancho */
+  max-width: 600px; /* Limita el ancho máximo de la barra de búsqueda */
+  padding: 10px; /* Espaciado interno para que se vea más amplia */
+  margin-right: 10px; /* Espacio entre el input y el botón */
+}
+
+.search-container button {
+  padding: 10px 20px; /* Añade un poco de espacio alrededor del texto del botón */
+  cursor: pointer; /* Cambia el cursor a pointer cuando pases sobre el botón */
+}
+
+
+  
+       
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Erik Launcher</h1>
+
+
+
+</header>
+  <p>
+      
+  </p>
+
+
+
+    
+<div class="container">
+
+    <div class="app-card">
+        <img src="https://cdn.glitch.global/1978d8e0-5613-45c1-8413-2938417819a9/ErikSearch_logo-removebg-preview.png?v=1733161461974" alt="App 1">
+        <div class="app-title">Erik Search</div>
+        <a href="https://eriksearch.glitch.me/" class="download-btn">Abrir</a>
+    </div>
+  <div class="app-card">
+        <img src="https://cdn.glitch.global/e4c4249d-45fa-49f4-bd87-14989b959c4b/Erik_Downlader-removebg-preview.png?v=1723730045791" alt="App 1">
+        <div class="app-title">Erik App Store</div>
+        <a href="https://erikappstore.glitch.me/" class="download-btn">Abrir</a>
+    </div>
+   <div class="app-card">
+        <img src="https://cdn.iconscout.com/icon/free/png-256/free-find-my-icon-download-in-svg-png-gif-file-formats--iphone-ios-13-ios13-ipad-os-14-pack-user-interface-icons-1575949.png" alt="App 1">
+        <div class="app-title">Erik My find</div>
+        <a href="https://myfind.glitch.me/" class="download-btn">Abrir</a>
+    </div>
+    <div class="app-card">
+        <img src="data:image/png;base64,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" alt="App 1">
+        <div class="app-title">Erik Account</div>
+        <a href="https://erikaccount.glitch.me/" class="download-btn">Abrir</a>
+    </div>
+
+ <div class="app-card">
+        <img src="data:image/png;base64,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" alt="App 1">
+        <div class="app-title">Erik Chat</div>
+        <a href="https://erikchat.glitch.me/" class="download-btn">Abrir</a>
+    </div>
+    <div class="app-card">
+      <img src="https://cdn.glitch.global/289a211a-7dfc-402c-b788-4bc4da318d2d/Icono_ErikStudios-removebg-preview.png?v=1733433454883" alt="App 1">
+        <div class="app-title">Pagina web Official de Erik</div>
+        <a href="https://erikstudios.glitch.me/" class="download-btn">Abrir</a>
+    </div>
+  <div class="app-card">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJcAAACUCAMAAACp1UvlAAAAbFBMVEX///+MwPNDVny30+7l5+wmQW9KYYiGt+o1S3UvOlqIuuyOxPhBVHk3RWdSZ4unzPCvy+ecx/E+T3Ox0O+VxPK4vsp4hJ1RYoTv8POUnbGLlavZ3OKvtcNxfpmFkKY0QGJTbpaAr9+VvOSgwuM7mSUEAAADy0lEQVR4nO3c2XLaQBAFUINZFBCbABu8Q/7/HyOBmZHRrL0qVe43u1L4ZOZyDSTVDw+pM9o/PZcFfMrnp/0o+aelzuE4rB96iJn6LzU8HmhZ+3GBMt2mGO8pWUfkUbVlRzrWy5hKVc/4hYq1p7nD2xREVzkKnla1cE0VPDGap+VH8LgWf1yzCB7YBwXrNfQj6mf/p2siT5NXAtcbbbqaKd4IXO8MrncC15CsusyUQzzrQH9c9YHhfx2FWwI4BE1hXSV+GFxVNYHM0kzzVVVRu8qvwRwwj2Z2zZeDr5L6vE7zQf6sDGt1+Xp+Ij6vcjIFsHaGtf3+znRS9sC1tbfYJ9fm7hb74uoe12C21Hfdh76Ztb7Lhv7RfG/TA5e9xY2l6rscoa9vVt/Vanp7XPouV+i3+q5u019vVtvlCP3lZte6veoOfT1nXZej6S83u9X9PeQJfa1UdTmb/qpUdbmafntVarps6G1HrL6Vmi5v6AeqLn/oVV2tpjfHtTFKPZc9rp9Nf1WqubxNf1WquRyh37SemlquYOj1XIGmV3UFml7TFWp6TVeo6RVdsdArucJNr+fyvaa3ShVXPPQ6LltdvtCruBJCr+HyvZFth17D5Xh587PpdVxJoVdwxZtexeV6NdgNvbgrMfTiLlfoXbco7HIdlyv00q7U0Au7kkMv60oPvawrsemlXalNL+3KCL2kKyf0ki7D8ryRVXKlN72oK6PpRV32FlNCL+bKDL2UK6vpBV2ujyy9TS/ninxkqebKa3oxV9obWXlXZtNLubyf04dY/K7sphdyOW4xGnoBV37Ti7gATS/i8oU+0PQSLmDo2V2QphdwgZpewAVqen6X7zV9NPS8LnjoeV32FnNDz+qCNj2zK+UfpzRc3tf0ScfF5kKFntEFb3pWl7fpE4+Ly4Voek5X1keWci5s6Llc2NAzuXBNz+bameMCNT2bK/wfztRcZ3zoWVxrfOg5XEvjAjY9u8v8jOzQs7qgTc/swoSe04UJPaML3vSsLkTTs7oQTc/pQoaezYUMPZcL1fSMLvPowNAzuXBNz+bCh57HhQ89i+uveWxY0zO5JrPbQ8NDz+sCNj2Py+4HWGGOi3w/QH1gp1kz53Uz0xlsThPyfQpla6EEaBPFZUrq86KdX9ev6/93dbZs9cNVdbZsBbd/Ebnie5AALoI9SPG9Ufkuir1R8T1b+S6SPVvRvWQAF8VessgeN1C+KPa4Rfbe1WnpuCKJLGg2GEaborqfyJ8fEy3J7Olexd7uoaTc21lS7u3s7Z7T3u6FfZDeo/sP3B2dorJ97yMAAAAASUVORK5CYII=" alt="App 1">
+        <div class="app-title">Erik OS sim</div>
+        <a href="https://erikos.glitch.me/" class="download-btn">Abrir</a>
+    </div>
+    <!-- Agrega más tarjetas de aplicaciones según sea necesario -->
+</div>
+  
+ 
+
+
+  
+<script>
+    // Obtener el parámetro 'name' de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const nombreUsuarioURL = urlParams.get('name');
+
+    // Elementos del DOM
+    const iniciarSesionBtn = document.getElementById('iniciarSesionBtn');
+    const perfilUsuario = document.getElementById('perfilUsuario');
+    const nombreUsuario = document.getElementById('nombreUsuario');
+    const menuOpciones = document.getElementById('menuOpciones');
+    const cerrarSesion = document.getElementById('cerrarSesion');
+    const descargas = document.getElementById('descargas');
+
+    // Verificar si ya hay un nombre de usuario en la URL
+    if (nombreUsuarioURL) {
+        // Si hay un nombre en la URL, mostrar la interfaz de usuario
+        mostrarPerfil(nombreUsuarioURL);
+    }
+
+    // Función que muestra la alerta de inicio de sesión
+    iniciarSesionBtn.addEventListener('click', function() {
+        // Redirigir a la página de inicio de sesión
+        window.location.href = 'https://erikaccount.glitch.me/logins/erikappstore.html';
+    });
+
+    // Función que muestra el perfil del usuario y oculta el botón de inicio de sesión
+    function mostrarPerfil(nombre) {
+        iniciarSesionBtn.style.display = 'none'; // Ocultar el botón
+        perfilUsuario.style.display = 'flex'; // Mostrar el perfil
+        nombreUsuario.textContent = nombre; // Mostrar el nombre
+    }
+
+    // Función para mostrar/ocultar el menú de opciones cuando se toca el perfil
+    perfilUsuario.addEventListener('click', function() {
+        menuOpciones.style.display = menuOpciones.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Cerrar sesión: eliminar el nombre guardado y reiniciar la página
+    cerrarSesion.addEventListener('click', function() {
+        // Redirigir a index.html sin parámetros
+        window.location.href = 'index.html';
+    });
+
+    // Redirigir a la página de descargas
+    descargas.addEventListener('click', function() {
+        // Verificar si el parámetro 'name' está presente en la URL
+        if (nombreUsuarioURL) {
+            window.location.href = 'descargas.html' + window.location.search; // Mantener el parámetro 'name'
+        } else {
+            window.location.href = 'index.html'; // Si no hay nombre, redirigir a index
+        }
+    });
+
+</script>
+<script>
+function noApp() {
+    alert('App no disponible');
+}
+  
+  </script>
+
+
+</body>
+</html>
