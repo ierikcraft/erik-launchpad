@@ -3,311 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="https://img.freepik.com/vector-gratis/iconos-aplicacion-estilo-3d_23-2147519672.jpg" type="image/png">
-    <title>Erik Launcher</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Mi Launcher Personal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Contenedor principal alineado a la derecha */
-        .2 body {
-            display: flex;
-            justify-content: flex-end;
+        :root {
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --primary: #007bff;
+            --text: #333;
+            --text-secondary: #666;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text);
+            padding-bottom: 70px; /* Espacio para la barra inferior */
+        }
+
+        /* --- HEADER & BÚSQUEDA --- */
+        header {
             padding: 20px;
+            background: var(--card-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        /* Estilo del botón inicial */
-        .iniciar-sesion {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        /* Estilo del contenedor que mostrará el nombre e icono */
-        .perfil {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
             position: relative;
         }
 
-        /* Estilo del ícono de usuario */
-        .perfil img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-
-        /* Estilo del menú desplegable */
-        .menu-opciones {
-            display: none;
-            position: absolute;
-            top: 50x;
-            right: 0;
-            background-color: blue;
-            border: 1px solid #ccc;
-            list-style: none;
-            padding: 10px;
-            margin-top: 10px;
-            z-index: 1;
-        }
-
-        .menu-opciones li {
-            padding: 5px;
-            cursor: pointer;
-        }
-
-        .menu-opciones li:hover {
-            background-color: #ADD8E6;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-          
-        }
-        header {
-            background-color: #007aff;
-            color: white;
-            padding: 15px;
-            text-align: center;
-        }
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 20px;
-        }
-           .container2 {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: left;
-            padding: 3px;
-        }
-        .app-card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            margin: 15px;
-            padding: 15px;
-            width: 200px;
-            text-align: center;
-            transition: transform 0.2s; /* Animación al escalar */
-        }
-        .app-card img {
+        #search-input {
             width: 100%;
-            border-radius: 10px;
-        }
-        .app-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-        .download-btn {
-            background-color: #007aff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background-color 0.2s, transform 0.2s; /* Transición suave */
-        }
-        .download-btn:hover {
-            background-color: #005bb5; /* Color al pasar el mouse */
-            transform: scale(1.05); /* Escala al pasar el mouse */
-        }
-        .app-card:hover {
-            transform: scale(1.05); /* Escala la tarjeta al pasar el mouse */
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #007aff;
-            color: white;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-     .search-container {
-  
-            display: flex;
-            justify-content: center; /* Centra el contenido */
-            align-items: center; /* Centra el contenido verticalmente */
+            padding: 12px 40px;
             border-radius: 25px;
-       
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
- .search-container {
-  width: 100%; /* Ocupa todo el ancho disponible */
-  display: flex; /* Usamos flexbox para alinear los elementos */
-  justify-content: center; /* Centra el contenido horizontalmente */
-}
+            border: 1px solid #ddd;
+            outline: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
 
-.search-container input {
-  width: 50%; /* El campo de búsqueda ocupará el 50% del ancho */
-  max-width: 600px; /* Limita el ancho máximo de la barra de búsqueda */
-  padding: 10px; /* Espaciado interno para que se vea más amplia */
-  margin-right: 10px; /* Espacio entre el input y el botón */
-}
+        #search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 8px rgba(0,123,255,0.2);
+        }
 
-.search-container button {
-  padding: 10px 20px; /* Añade un poco de espacio alrededor del texto del botón */
-  cursor: pointer; /* Cambia el cursor a pointer cuando pases sobre el botón */
-}
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
 
+        /* --- GRID DE APLICACIONES --- */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-  
-       
+        .app-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text);
+            transition: transform 0.2s;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .app-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .app-icon {
+            width: 65px;
+            height: 65px;
+            background: var(--primary);
+            border-radius: 18px; /* Estilo iOS/Android */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            color: white;
+            font-size: 28px;
+        }
+
+        .app-name {
+            font-size: 13px;
+            font-weight: 500;
+            text-align: center;
+            max-width: 90px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* --- BARRA DE NAVEGACIÓN INFERIOR (Estilo Móvil) --- */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 65px;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 1px solid #ddd;
+            z-index: 1000;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 12px;
+            flex: 1;
+            cursor: pointer;
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+        }
+
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Ocultar secciones */
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Erik Launcher</h1>
+    <header id="header-search" class="hidden">
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="search-input" placeholder="Buscar aplicaciones..." autocomplete="off">
+        </div>
+    </header>
 
+    <main id="main-content">
+        <div class="app-grid" id="app-list">
+            <a href="https://google.com" class="app-item" data-name="google">
+                <div class="app-icon" style="background: #4285F4;"><i class="fab fa-google"></i></div>
+                <span class="app-name">Google</span>
+            </a>
+            <a href="https://youtube.com" class="app-item" data-name="youtube">
+                <div class="app-icon" style="background: #FF0000;"><i class="fab fa-youtube"></i></div>
+                <span class="app-name">YouTube</span>
+            </a>
+            <a href="https://facebook.com" class="app-item" data-name="facebook">
+                <div class="app-icon" style="background: #1877F2;"><i class="fab fa-facebook"></i></div>
+                <span class="app-name">Facebook</span>
+            </a>
+            <a href="https://instagram.com" class="app-item" data-name="instagram">
+                <div class="app-icon" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);"><i class="fab fa-instagram"></i></div>
+                <span class="app-name">Instagram</span>
+            </a>
+            <a href="https://web.whatsapp.com" class="app-item" data-name="whatsapp">
+                <div class="app-icon" style="background: #25D366;"><i class="fab fa-whatsapp"></i></div>
+                <span class="app-name">WhatsApp</span>
+            </a>
+            <a href="https://github.com" class="app-item" data-name="github">
+                <div class="app-icon" style="background: #333;"><i class="fab fa-github"></i></div>
+                <span class="app-name">GitHub</span>
+            </a>
+        </div>
+    </main>
 
+    <nav class="bottom-nav">
+        <div class="nav-item active" onclick="showSection('home')">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+        </div>
+        <div class="nav-item" onclick="showSection('search')">
+            <i class="fas fa-search"></i>
+            <span>Búsqueda</span>
+        </div>
+    </nav>
 
-</header>
-  <p>
-      
-  </p>
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const apps = document.querySelectorAll('.app-item');
+        const headerSearch = document.getElementById('header-search');
 
+        // Función para filtrar apps
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            apps.forEach(app => {
+                const name = app.getAttribute('data-name').toLowerCase();
+                if (name.includes(term)) {
+                    app.classList.remove('hidden');
+                } else {
+                    app.classList.add('hidden');
+                }
+            });
+        });
 
-
-    
-<div class="container">
-
-    <div class="app-card">
-        <img src="https://cdn.glitch.global/647fd858-f0a6-4652-b1c7-40ab5ea1e6bc/erik-ia-animation-more-visual-unscreen.gif?v=1744748575452" alt="App 1">
-        <div class="app-title">Erik AI</div>
-        <a href="https://erikai.vercel.app/index.html" class="download-btn">Abrir</a>
-    </div>
-      <div class="app-card">
-        <img src="https://play-lh.googleusercontent.com/R0cj4fcRlrr2ldqBOjqGUA242p5KdHAXjXm9eI3W50XVVOgBBsPoC9hCxHGoOeMeJw" alt="App 1">
-        <div class="app-title">Erik Cloud</div>
-        <a href="https://erikcloud.vercel.app/" class="download-btn">Abrir</a>
-    </div>
-  <div class="app-card">
-        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAH2AfYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD1eiiiuw4wooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApaltolkfBOK0l0+Ij1pOaW5Si3sZFJW1/Z0XpR/Z0XpUe0iPkZi0Vs/2bF6Uv9nRe9HtEPkkYtFbB0yL3pP7Mj9TR7RBySMiitf+zI/U0f2ZH6mj2iFySMiitf8AsyP1NH9mR+po9og5JGRRWv8A2ZH6mj+zI/U0e0QckjIorX/syP1NH9mR+po9oh8kjIorVOlp2Yik/sxf7xp+0iLkkZdFan9mL/eNH9mL/eNHtIhySMuitT+zF/vGj+zF/vGj2kQ5JGXRWp/Zi/3jR/Zi/wB40e0iHJIy6K1P7MX+8aP7LHZqPaRDkkZdFaf9lf7dH9lf7dHtIhyyMyitI6Ww6MKqT2jwDJII9qamnsLlaIKKKMVQgooooEFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVPbQGZyPSoK0NKGXf2FTKVkVFXditLC8EnoO1XbO75COauzQJMpBrGlia3kYc4B4NZX5jS3Lsb/AFFGKzrO8DAI/wCBrQByKzasaJ3Cig0UiwooooAKKKKACiiigAooooAKKKKACjFFFMAxRiiigAxRiiigAxRiiigAxRRQKACilxTJJFRck4oEDuEUk8Csa7ut8hUHg067vGlJVTxRaWbSEOw49K0iktzKTvoisYHEe/bxTM1tzoFt2AA4FYh61pGVzNxa3EoooqyAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACtLSRzIazTWnpP/LSs6mxpT+I06guLdZlwRzU9FYJ2NmrmDLE9u/p6Ves7zcAjmrM9usyYI5rIkjeCQjGMdKu6ZFmmbwORkUVQtLwNhGPSr+QelQ1Y0TuFFFFIoKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoHWimuyou4nAFAnoLJII1yaxbu5aRyoPFPurppmIBwBTrS0L4dhWsVZXZm5X0Qy0si5Dv0rXRAqgDpSIgQYAp2aiTuVGJDdD9w9YJ61v3I/0dvpWAetXTIqCUUUVuYBRRRQAppKU0lABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABWlpQ+dz221m1p6V95/pWdTY0p/EadFAornOhBUE9usynPWp6KadgaTMCVHglIPHPBrQs7sMoRjzVi4t1mQ5HNY7o9vLg8elaKzRk7o3wciiqFpdhwFJ5q8DkZFZtWNE7i0UUUigooooAKKKKACiiigAooooAKKKKACiiigAoopkkixrknFMTdgklWNSx6Vj3V200m0ZA9KLm6MzlRwKls7MsQ8g+lWkkrszcm9EFpZs5Dyfd7CtVECjAGBQiBRgdKdjFS5XKjGwUmKU0lSWR3P8Ax7t9K54/eNb90cW7/SufPWtaZjVCiiitzAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigArU0zqay61NM6ms6mxpT+I0hRQKK5zoQUUUUDFqvc26zIeOasA0daadiWrnPSI9vJ3ArRs7sMoRjVi5tlmU8DNY7o8EhHTFaXTRmk07m/wBsiiqFleBwFY81frNqxoncKKKKRQUUUUAFFFFABRRRQAUUUCgAopcVFJKsakk0JXFewSyLEhYnFY89y07HBwvakurlp5NoJxngVPaWZYh37dBWiVkZNtuyCzsySJHH0FaoUKMAcUKuABTs1Ddy4xsJTh0ptOHSkUIaSlNJQMgvP+PV/pWCetb95/x6v9KwD1ralsY1RKKKK2MAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACtTTOprLrU0zqazqbGlP4jSFFAornOhBRRRQMKKKKAAVXurdZkPHNWKDgDmmnYmSuc86PBJg8elalpeCUBW4YVBqMiFQoA3Vno5Ugg8itLcyM72Z0lFU7K7EiBWPNXO2RWbVjVO4UUUUhhRRRQAUUUUAFLSVHLKsS7mOKEriYTTLEhJI4rFuLh532jpTrm4M8m0H5abbbBON1aqNlcycr6FqzssfO45NaaKFFImCox0p2ahyuXFAaKKUVJYlOopM0CA0lGaKBkF3/x6v8ASsE9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UAFFFFABRRRRYAooooAKKKKBhRRRQAZozRRRZAFFFFFkIKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9k=" alt="App 1">
-        <div class="app-title">Erik Mail</div>
-        <a href="https://erikmail.vercel.app/" class="download-btn">Abrir</a>
-    </div>
-      <div class="app-card">
-        <img src="https://cdn.glitch.global/e4c4249d-45fa-49f4-bd87-14989b959c4b/Erik_Downlader-removebg-preview.png?v=1723730045791" alt="App 1">
-        <div class="app-title">Erik App Store</div>
-        <a href="https://erikappstore.vercel.app/" class="download-btn">Abrir</a>
-    </div>
-   <div class="app-card">
-        <img src="https://cdn.iconscout.com/icon/free/png-256/free-find-my-icon-download-in-svg-png-gif-file-formats--iphone-ios-13-ios13-ipad-os-14-pack-user-interface-icons-1575949.png" alt="App 1">
-        <div class="app-title">Erik My find</div>
-        <a href="" class="download-btn">No disponible</a>
-    </div>
-     <div class="app-card">
-        <img src="https://i.ibb.co/GfkxZyWC/Gemini-Generated-Image-nw9ti8nw9ti8nw9t.png" alt="App 1">
-        <div class="app-title">ErikOffice</div>
-        <a href="https://erik-office.vercel.app/" class="download-btn">Abrir</a>
-    </div>
-    <div class="app-card">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMwAAADACAMAAAB/Pny7AAAAY1BMVEUhlvP///+w0vkAjfIAkPIZlPPz+f4Ai/IQkvPP5fzw9/7A3fvm8v37/f83nvTG4Pt9u/fW6fyz1vpAofTg7v1KpPSo0PmJv/comfOPxPhXq/Whzfl2uPdqsvZSqPVkrvUAhvEaEWeeAAAGfElEQVR4nO2d2ZajIBBASQsEo2jcMRrN/3/lYJbJZlQUBTzet35pvYetwCoCdisCqH4BmWwyurLJ6MomoyubjK5sMrqyyejKJqMrm4yubDK6ssnoyiajK5vMWNzA9p3wLwwd33ax/P+/lAwOwvx4rpLIY4AxL0rq8pg7sdyHLCKD/ewUMUQIQQQBBABC1z+85JzbEp+zgIydJVwEcYdPuBJgdeHKetLsMn6E2jyePlyolKQzs4zP9qBD5S4E97UUnTllqJ/se01uwEt2oJMfOKNMnEEyTKXB8sLD1CfOJoOdxBrYLI/OVgYTG2cumTgjAs1yt0nCaTYzyQS1WLPcICyf1NXmkXESKK7S2KByis0sMn+eaBf7DzxNsJlDJmUjuth/m2T8kjODTNi/THaBktHxtHwZpyt6GWYzdk6TLmOPHy8PyHlk28iWiaNx89hb06B8XNtIlsFna7JLs96EC8tQ7AaBzQniZ4yY7iW4cJsqWFCG74KL7LoLjpKqPuapf51Q46mD/wE8jlluRskERVkxCK+74Gb/CyHy6izE9DR9wNxBY8K0ETJOmQAeRb63AXdidUkkNQz/f9GItVNYxq/Zj30wEo6Tu4AjZjRBmUPZuaOXCLLEm0ZMJgRwGRWOVc4qg3N5Y6IfdBGe0ARkYikL4nCs43wyfPO4qAtfOkVDtMEywWlpFwD/ZpJxl3cBqJ5Jppa2tgvABL8SDJTJl2+XhmIOmXDJOfmJaD8bJHOIZAYqAjKChxuDZEo1LgAxR7qMP+XoaJIMyKXLHBW5cBuxIGCAjB+pkxE7p+mXobmiEcMhJ6EZoF8mOKmTQYnQwUa/TLjQbqxVJvKlyuBMRSDzkPGE5uZemVhhL5Mu4yvsZTzUFDra7JUJ1YSYNxAT2tL0yeBc4ZDhLSNV5lCqlEFyu5mrcvzLngBidbEMh3hS15nYUymDKqGNc6+MqvD/JpOE1+8/smSUtgxgUZRUVV3mhTMg5OyTsZW2TJNb16TX8XcYkgLZKXMoEqZS5YXrxwcWdefWdMgEJVS6YLaAIKw6mueXDLWrvW4qV9A+cX59hmqXocHZUrlYdkL2ld2u0yoT59p1sDeIlbfuQFtksBONyXxbFMsLW446vmXcHGnbw54Qkn8HB18y9lnNubIwpP6K2z5lnMSAZrlBos+Q+kMmVBu9iIG8sEOG/ind8AuDUEp/yjhaT8htWOEvGUf7Gfkby2mXCQx0Aciy22RcQ6bkD8je/ZbB8nLFlgVW+EtG7fnYFGD+KeNMy6xWCQLhu4xbGevSnOG4bzK5WavlOwjlrzK20qO+yaD7WeFVhmbGRJftwCP+L+ObFF62cc9+aGRwpvIbjBRghu8ytukN04wa+yZDC+MbhgecBb3KGL3GPCBNAhQwcRfTBvQbmRUM/waLz85gdzB7wXyAPJfL2KtoGN40NpdRlEsqHavYAYkFPGqBJwqo6peQBsHAvah+CVlcXODIqd/TgL0P0pWMfz4DpEBlbpxcYAZqw/dlT0gNEtXvIA10AusIZhpQBMzfmD1Anuo3kMuqWiZZj0wCTuuROa1rnTmuJwI4gjWcM92wijVFzc669jN4Pd0MA7qWhQYldEWnM/nazs1cXbJ9J8KaE02stKhEGrDE168Aq+hnTUYQUF1VIgkUxVcZvIb5zMrx7Zumv4IpgPn3D7QH8yPn2xVi1zwAR21dyXRe8gB2B1VXMciC3C5GveXOOGYfazyKBm8yNDNbJqOvKVqxybEzSuL3TMDU3IQzhNKPtEZq7vQMj/RDZneYfs2qGoj3v6jumdccX1S/1jguzzqal4zz0Mhzmv1LNcBrLUA69BZ/fUD7dNcuQwvjJgFY0B8yfDNg1gSNUP5WRvde2YQLZtCchljxXhL4UaZFU3NsCEs/ak8/C+jo2Cv9Fwd+lwV/12kGpRG7aKv8LqJtqaA9FHoXAzdAWLQU07fVNtOg1rdMu4FYdesPorRXneOQaRwO7FlbYfNPmaavIT3r6fhrtfWwTpkmHvCWumh6MPyFvOL3Ddtdd2hQ/+wB0vqjXsvT3AwPvLPfdVl4z+0mcVpWESPNL6whpKIsDd1/4I2wqCrTnit1+q/RO/hFVp4rz2NMwcknf6jnVecyK/z+q3SG3T1L3cB3nPBPAaHj+IE77Cb67ScodWWT0ZVNRlc2GV3ZZHRlk9GVTUZXNhld2WR0ZZPRlU1GVzYZXVmVzD/Nw3v1m7U+eQAAAABJRU5ErkJggg==" alt="App 1">
-        <div class="app-title">Erik Account</div>
-        <a href="https://erikaccount.vercel.app/" class="download-btn">Abrir</a>
-    </div>
-    
-   <div class="app-card">
-        <img src="https://i.ibb.co/tMKkdCSV/Gemini-Generated-Image-4si6et4si6et4si6.png" alt="App 1">
-        <div class="app-title">Erik Status</div>
-        <a href="https://erik-status.vercel.app/" class="download-btn">Abrir</a>
-    </div>
- <div class="app-card">
-        <img src="https://cdn.glitch.global/1978d8e0-5613-45c1-8413-2938417819a9/ErikSearch_logo-removebg-preview.png?v=1733161461974" alt="App 1">
-        <div class="app-title">Erik Search</div>
-        <a href="https://erik-search.vercel.app/" class="download-btn">Abrir</a>
-    </div>
-    <div class="app-card">
-      <img src="https://cdn.glitch.global/289a211a-7dfc-402c-b788-4bc4da318d2d/Icono_ErikStudios-removebg-preview.png?v=1733433454883" alt="App 1">
-        <div class="app-title">Pagina web Official de Erik</div>
-        <a href="https://erik-studios.vercel.app/" class="download-btn">Abrir</a>
-    </div>
-      <div class="app-card">
-      <img src="https://imgs.search.brave.com/QKm3aANUh-UE7tlC_Ntyjz6O--QXxQ5ZgLsOqhJn81c/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZy/ZWVwaWsuY29tLzI1/Ni80OTk3LzQ5OTc1/NDMucG5nP3NlbXQ9/YWlzX3doaXRlX2xh/YmVs" alt="App 1">
-        <div class="app-title">ErikCode</div>
-        <a href="https://erikcode.vercel.app/" class="download-btn">Abrir</a>
-    </div>
- <div class="app-card">
-      <img src="https://www.krasamo.com/wp-content/uploads/Screen-Shot-2020-06-19-at-5.08.00-PM.png" alt="App 1">
-      <div class="app-title">ErikStore</div>
-        <a href="https://erik-store.vercel.app/" class="download-btn">Abrir</a>
-    </div>
-    <!-- Agrega más tarjetas de aplicaciones según sea necesario -->
-</div>
-  
- 
-
-
-  
-<script>
-    // Obtener el parámetro 'name' de la URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const nombreUsuarioURL = urlParams.get('name');
-
-    // Elementos del DOM
-    const iniciarSesionBtn = document.getElementById('iniciarSesionBtn');
-    const perfilUsuario = document.getElementById('perfilUsuario');
-    const nombreUsuario = document.getElementById('nombreUsuario');
-    const menuOpciones = document.getElementById('menuOpciones');
-    const cerrarSesion = document.getElementById('cerrarSesion');
-    const descargas = document.getElementById('descargas');
-
-    // Verificar si ya hay un nombre de usuario en la URL
-    if (nombreUsuarioURL) {
-        // Si hay un nombre en la URL, mostrar la interfaz de usuario
-        mostrarPerfil(nombreUsuarioURL);
-    }
-
-    // Función que muestra la alerta de inicio de sesión
-    iniciarSesionBtn.addEventListener('click', function() {
-        // Redirigir a la página de inicio de sesión
-        window.location.href = 'https://erikaccount.glitch.me/logins/erikappstore.html';
-    });
-
-    // Función que muestra el perfil del usuario y oculta el botón de inicio de sesión
-    function mostrarPerfil(nombre) {
-        iniciarSesionBtn.style.display = 'none'; // Ocultar el botón
-        perfilUsuario.style.display = 'flex'; // Mostrar el perfil
-        nombreUsuario.textContent = nombre; // Mostrar el nombre
-    }
-
-    // Función para mostrar/ocultar el menú de opciones cuando se toca el perfil
-    perfilUsuario.addEventListener('click', function() {
-        menuOpciones.style.display = menuOpciones.style.display === 'block' ? 'none' : 'block';
-    });
-
-    // Cerrar sesión: eliminar el nombre guardado y reiniciar la página
-    cerrarSesion.addEventListener('click', function() {
-        // Redirigir a index.html sin parámetros
-        window.location.href = 'index.html';
-    });
-
-    // Redirigir a la página de descargas
-    descargas.addEventListener('click', function() {
-        // Verificar si el parámetro 'name' está presente en la URL
-        if (nombreUsuarioURL) {
-            window.location.href = 'descargas.html' + window.location.search; // Mantener el parámetro 'name'
-        } else {
-            window.location.href = 'index.html'; // Si no hay nombre, redirigir a index
+        // Navegación sencilla
+        function showSection(section) {
+            // Resetear clases activas
+            document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+            
+            if (section === 'home') {
+                document.querySelector('.nav-item:nth-child(1)').classList.add('active');
+                headerSearch.classList.add('hidden');
+                // Al volver a home, mostrar todas las apps
+                apps.forEach(app => app.classList.remove('hidden'));
+                searchInput.value = '';
+            } else {
+                document.querySelector('.nav-item:nth-child(2)').classList.add('active');
+                headerSearch.classList.remove('hidden');
+                searchInput.focus();
+            }
         }
-    });
-
-</script>
-<script>
-function noApp() {
-    alert('App no disponible');
-}
-  
-  </script>
-
-
+    </script>
 </body>
 </html>
